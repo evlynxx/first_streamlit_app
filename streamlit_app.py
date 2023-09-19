@@ -1,5 +1,6 @@
 import streamlit
 import pandas as pd
+import requests as req
 
 # First part of the new menu
 streamlit.title('My Mom\'s New Healthy Diner')
@@ -22,3 +23,10 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 
 # Display the table on page
 streamlit.dataframe(fruits_to_show)
+
+# New section to display Fruity Vice API response
+streamlit.header('Fruityvice Fruit Advice!')
+
+fruityvice_response = req.get('https://fruityvice.com/api/fruit/watermelon')
+streamlit.text(fruityvice_response)
+
