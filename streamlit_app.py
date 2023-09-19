@@ -27,10 +27,9 @@ streamlit.dataframe(fruits_to_show)
 # New section to display Fruity Vice API response
 streamlit.header('Fruityvice Fruit Advice!')
 
-fruityvice_response = req.get('https://fruityvice.com/api/fruit/watermelon')
-streamlit.text(fruityvice_response.json()) # writes the data to the screen
+fruityvice_response = req.get('https://fruityvice.com/api/fruit/' + 'kiwi') # separate url base vs. variable (fruit name)
+# streamlit.text(fruityvice_response.json()) # writes the data to the screen
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json()) # take the json version of the response and normalize it
 
 # Display the table on page
-streamlit.text(fruityvice_normalized)
 streamlit.dataframe(fruityvice_normalized) 
