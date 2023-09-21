@@ -1,7 +1,8 @@
 import streamlit
 import pandas as pd
 import requests as req
-import snowflake.connector # will tell your app to bring in codes from snowflake library you added (snowflake-connector-python)
+import snowflake.connector # will tell your app to bring in codes from snowflake library you added (snowflake-connector-pytho)
+from urllib.error import URLError # use this in Control of Flows changes -> error messages handling
 
 # First part of the new menu
 streamlit.title('My Mom\'s New Healthy Diner')
@@ -39,6 +40,9 @@ fruityvice_normalized = pd.json_normalize(fruityvice_response.json()) # take the
 
 # Display the table on page
 streamlit.dataframe(fruityvice_normalized) 
+
+# don't run anything past here while we troubleshoot
+streamlit.stop()
 
 # query snowflake account metadata
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
