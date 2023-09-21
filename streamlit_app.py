@@ -3,6 +3,14 @@ import pandas as pd
 import requests as req
 import snowflake.connector # will tell your app to bring in codes from snowflake library you added (snowflake-connector-python)
 
+# query snowflake account metadata
+my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cur = my_cnx.cursor()
+my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
+my_data_row = my_cur.fetchone()
+streamlit.text("Hello from Snowflake:")
+streamlit.text(my_data_row)
+
 # First part of the new menu
 streamlit.title('My Mom\'s New Healthy Diner')
 
