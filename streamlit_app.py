@@ -1,6 +1,7 @@
 import streamlit
 import pandas as pd
 import requests as req
+import snowflake.connector # will tell your app to bring in codes from snowflake library you added (snowflake-connector-python)
 
 # First part of the new menu
 streamlit.title('My Mom\'s New Healthy Diner')
