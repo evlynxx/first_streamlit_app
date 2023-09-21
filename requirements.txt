@@ -1,2 +1,3 @@
 # requirements.txt
 snowflake-connector-python
+used to tell Streamlit which Python libraries used -> add them in advance -> everytime this file changes, need to reboot (start up) Streamlit
